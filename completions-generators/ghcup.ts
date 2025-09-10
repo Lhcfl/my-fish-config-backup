@@ -3,7 +3,11 @@ export default async function generator() {
   const text = await stdout.text();
   const lines = text.split("\n");
 
-  const out : string[] = [];
+  const out : string[] = [
+`# disable file completion
+complete -c ghcup -f
+`,
+  ];
   let is_command = false;
   for (const line of lines) {
     if (line.trim() === "") {
